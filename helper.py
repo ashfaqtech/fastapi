@@ -16,8 +16,8 @@ def create_table():
 
 
 # ➕ CREATE
-def create_student(name, age):
-    cursor.execute("INSERT INTO students (name, age) VALUES (?, ?)", (name, age))
+def create_student(name, email):
+    cursor.execute("INSERT INTO students (name, email) VALUES (?, ?)", (name, email))
     conn.commit()
     return {"message": "Student created"}
 
