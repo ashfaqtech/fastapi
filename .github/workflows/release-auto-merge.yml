@@ -1,0 +1,30 @@
+name: Release Auto Merge
+
+on:
+  workflow_dispatch: # 👈 This is the line that lets your API/Postman trigger it!
+    inputs:
+      action:
+        description: 'Action to perform'
+        required: true
+        default: 'merge'
+      branches:
+        description: 'Branches to merge'
+        required: true
+      release_branch:
+        description: 'Target release branch'
+        required: true
+      pr_number:
+        description: 'Pull Request Number'
+        required: true
+        default: '0'
+
+jobs:
+  merge-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Inputs
+        run: |
+          echo "Action: ${{ github.event.inputs.action }}"
+          echo "Branches: ${{ github.event.inputs.branches }}"
+          echo "Release Branch: ${{ github.event.inputs.release_branch }}"
+          echo "PR Number: ${{ github.event.inputs.pr_number }}"
